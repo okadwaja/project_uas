@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_uas/screen/book_detail_screen.dart';
 import '../services/api_service.dart';
 
 class RecentBooksScreen extends StatefulWidget {
@@ -39,7 +40,13 @@ class _RecentBooksScreenState extends State<RecentBooksScreen> {
                   title: Text(book['title']),
                   subtitle: Text(book['authors']),
                   onTap: () {
-                    // Arahkan ke detail buku
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            BookDetailScreen(bookId: book['id']),
+                      ),
+                    );
                   },
                 );
               },
