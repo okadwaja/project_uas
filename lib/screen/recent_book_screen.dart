@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_uas/screen/book_detail_screen.dart';
+import 'package:project_uas/screen/favorit_book_screen.dart';
 import '../services/api_service.dart';
 
 class RecentBooksScreen extends StatefulWidget {
@@ -21,6 +22,17 @@ class _RecentBooksScreenState extends State<RecentBooksScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Recently Added Books'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.bookmark),
+            onPressed: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FavoritesScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: FutureBuilder<List<dynamic>>(
         future: _recentBooks,
